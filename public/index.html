@@ -14,22 +14,41 @@
       <span class="logo">📈</span>
       <div>
         <h1>资产实时看板</h1>
-        <p class="tagline">A股 · 港股 · 美股 · 比特币 — 红涨绿跌</p>
+        <p class="tagline">A股 · 港股 · 美股 · 比特币 — <span class="up">红涨</span> <span class="down">绿跌</span></p>
       </div>
     </div>
     <div class="controls">
-      <label class="src">数据源
+      <label class="ctl">数据源
         <select id="source">
           <option value="tencent">免费 · 腾讯行情</option>
           <option value="paid" disabled>付费源（需配置 API Key）</option>
         </select>
       </label>
-      <label class="auto">
-        <input type="checkbox" id="autoToggle" checked /> 自动刷新
+      <label class="ctl">排序
+        <select id="sort">
+          <option value="default">默认顺序</option>
+          <option value="changeDesc">涨幅优先</option>
+          <option value="changeAsc">跌幅优先</option>
+        </select>
       </label>
+      <label class="ctl chk"><input type="checkbox" id="autoToggle" checked /> 自动刷新</label>
       <button id="refreshBtn" class="btn">↻ 刷新</button>
     </div>
   </header>
+
+  <!-- 市场总览：一眼看涨跌全貌 -->
+  <section class="overview" id="overview">
+    <div class="ov-counts">
+      <div class="ov-pill up"><span class="ov-num" id="ovUp">–</span><span class="ov-lbl">上涨</span></div>
+      <div class="ov-pill down"><span class="ov-num" id="ovDown">–</span><span class="ov-lbl">下跌</span></div>
+      <div class="ov-pill flat"><span class="ov-num" id="ovFlat">–</span><span class="ov-lbl">平</span></div>
+    </div>
+    <div class="ov-movers">
+      <div class="ov-mover" id="ovTopGain"><span class="ov-tag up">领涨</span><span class="ov-body">–</span></div>
+      <div class="ov-mover" id="ovTopLoss"><span class="ov-tag down">领跌</span><span class="ov-body">–</span></div>
+      <div class="ov-mover" id="ovBtc"><span class="ov-tag btc">BTC</span><span class="ov-body">–</span></div>
+    </div>
+  </section>
 
   <div class="statusbar">
     <span id="status" class="status">加载中…</span>
