@@ -3,6 +3,15 @@
 实时监控 **A股 · 港股 · 美股** 的主要指数、ETF、个股，以及 **比特币（BTC）** 行情的公开看板。
 遵循「**红涨绿跌**」视觉习惯，无需注册，开箱即用，支持一键跳转到实时数据源。
 
+🔗 **在线地址（公开访问）：** https://zichan-board.vercel.app
+
+## 看板特性
+
+- **市场总览栏**：顶部一眼看涨/跌/平家数、领涨领跌标的、BTC 实时价。
+- **红绿色条卡片**：每张卡片左侧色条 + 醒目涨跌幅药丸，满屏红绿一目了然。
+- **排序**：可按「涨幅优先 / 跌幅优先 / 默认顺序」排列，最大波动浮到最前。
+- **自动刷新**：行情 12s、BTC 30s 自动更新；切到后台自动暂停省流量。
+
 ## 监控标的
 
 | 板块 | 标的 |
@@ -37,15 +46,15 @@ npm start          # 等价于 node server.js
 零配置静态站点 + Serverless Functions（`/api/*`）。
 
 ```bash
-# 方式一：CLI
-npx vercel            # 预览
-npx vercel --prod     # 生产
+# 一键部署 + 自动把好记域名指向最新版本
+npm run deploy        # = bash deploy.sh
 
-# 方式二：GitHub
-# 推送到 GitHub 后，在 vercel.com 导入仓库，Framework 选 "Other"，直接 Deploy。
+# 或手动
+vercel --prod --yes --scope chris-projects-9c281e2b
 ```
 
-部署后即为**公开访问**地址，可在任意终端查看。
+> 已绑定好记域名 **zichan-board.vercel.app**，且已关闭 Vercel 部署保护，
+> 任意终端可**公开访问**，无需登录。`npm run deploy` 会在每次发布后自动把该域名指向最新部署。
 
 ## 接入付费数据源（预留）
 
