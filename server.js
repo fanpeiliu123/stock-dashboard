@@ -26,10 +26,11 @@ const server = http.createServer(async (req, res) => {
   if (pathname === '/api/quotes') return quotes(req, res);
   if (pathname === '/api/crypto') return crypto(req, res);
 
-  // Static files (no traversal outside project root).
+  // Static files served from public/ (mirrors Vercel's static root).
+  const root = path.join(__dirname, 'public');
   const rel = pathname === '/' ? 'index.html' : pathname.replace(/^\/+/, '');
-  const file = path.join(__dirname, rel);
-  if (!file.startsWith(__dirname)) {
+  const file = path.join(root, rel);
+  if (!file.startsWith(root)) {
     res.statusCode = 403;
     return res.end('forbidden');
   }
