@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>资产实时看板 · A股 / 美股 / 港股 / BTC</title>
+  <meta name="description" content="实时监控 A股、美股、港股主要指数、ETF、个股及比特币行情。红涨绿跌，公开看板。" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">📈</span>
+      <div>
+        <h1>资产实时看板</h1>
+        <p class="tagline">A股 · 港股 · 美股 · 比特币 — 红涨绿跌</p>
+      </div>
+    </div>
+    <div class="controls">
+      <label class="src">数据源
+        <select id="source">
+          <option value="tencent">免费 · 腾讯行情</option>
+          <option value="paid" disabled>付费源（需配置 API Key）</option>
+        </select>
+      </label>
+      <label class="auto">
+        <input type="checkbox" id="autoToggle" checked /> 自动刷新
+      </label>
+      <button id="refreshBtn" class="btn">↻ 刷新</button>
+    </div>
+  </header>
+
+  <div class="statusbar">
+    <span id="status" class="status">加载中…</span>
+    <span id="updated" class="updated"></span>
+  </div>
+
+  <main id="board"><!-- sections injected by app.js --></main>
+
+  <footer class="foot">
+    <p>数据来源：腾讯财经 / CoinGecko（公开免费源，仅供参考，非投资建议）。点击任意卡片右上角「↗」跳转至实时数据源。</p>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
